@@ -4,12 +4,12 @@ import 'color_app.dart';
 
 class AppTheme{
   static final appThemeData = ThemeData(
-    appBarTheme:  AppBarTheme(
+    appBarTheme:  const AppBarTheme(
         color: AppColor.whiteColor,
         elevation: 0,
         titleTextStyle: TextStyle(
-            color: Colors.black,
-            fontSize: 20
+          color: Colors.black,
+          fontSize: 25,
         ),
         iconTheme: IconThemeData(
           color: Colors.black,
