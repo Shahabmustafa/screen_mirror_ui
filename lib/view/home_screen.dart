@@ -2,9 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:screen_mirror/utils/color_app.dart';
 import 'package:screen_mirror/utils/utils.dart';
+import 'package:screen_mirror/view/premium/browser_screen.dart';
 import 'package:screen_mirror/view/premium/google_drive.dart';
+import 'package:screen_mirror/view/premium/iptv_screen.dart';
 import 'package:screen_mirror/view/premium/media_screen.dart';
+import 'package:screen_mirror/view/premium/mirror_screen.dart';
+import 'package:screen_mirror/view/premium/setting.dart';
 import 'package:screen_mirror/view/premium/white_board_screen.dart';
+import 'package:url_launcher/url_launcher.dart' as launcher;
 
 import '../component/widgets/boxes_widget.dart';
 
@@ -22,10 +27,15 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         leading: Icon(Icons.cast),
         title: GoPremium(),
-        actions: const [
+        actions: [
           Padding(
             padding: EdgeInsets.only(right: 10),
-            child: Icon(Icons.settings),
+            child: InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => SettingPage()));
+              },
+              child: Icon(Icons.settings),
+            ),
           ),
         ],
         centerTitle: true,
@@ -41,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                 description: "Cast from websites",
                 imagePath: "img.png",
                 onTap: (){
-
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => BrowserPage()));
                 },
               ),
               Boxes(
@@ -63,15 +73,19 @@ class _HomePageState extends State<HomePage> {
                 description: "Watch TV channels",
                 imagePath: "img_2.png",
                 onTap: (){
-
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => IPTVPage()));
                 },
               ),
               Boxes(
                 title: "Youtube",
                 description: "Watch Youtube",
                 imagePath: "img_3.png",
-                onTap: (){
-
+                onTap: ()async{
+                  Uri uri = Uri.parse("https://www.youtube.com/");
+                  if(await launcher.launchUrl(uri)){
+                  }else{
+                    print("Could't Open this URl");
+                  }
                 },
               ),
             ],
@@ -84,16 +98,25 @@ class _HomePageState extends State<HomePage> {
                 title: "Google Drive",
                 description: "Cast files",
                 imagePath: "img_4.png",
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => GoogleDrivePage()));
+                onTap: ()async{
+                  Uri uri = Uri.parse("https://drive.google.com/drive/u/0/my-drive");
+                  if(await launcher.launchUrl(uri)){
+                  }else{
+                  print("Could't Open this URl");
+                  }
+                  // Navigator.push(context, MaterialPageRoute(builder: (context) => GoogleDrivePage()));
                 },
               ),
               Boxes(
                 title: "Google Photos",
                 description: "Cast media",
                 imagePath: "img_5.png",
-                onTap: (){
-
+                onTap: ()async{
+                  Uri uri = Uri.parse("https://www.google.com/photos/");
+                  if(await launcher.launchUrl(uri)){
+                  }else{
+                  print("Could't Open this URl");
+                  }
                 },
               ),
             ],
@@ -137,35 +160,40 @@ class _HomePageState extends State<HomePage> {
         ),
           ),
           20.ph,
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Container(
-              height: 80,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: AppColor.buttonButton,
-                borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.shade300,
-                    blurRadius: 3,
-                    offset: Offset(0, 1),
-                    spreadRadius: 0,
-                  ),
-                ],
-              ),
-              child: Center(
-                child: ListTile(
-                  title: const Text(
-                    "Screen mirroring",
-                    style: TextStyle(
-                      fontSize: 23,
-                      fontWeight: FontWeight.w500,
-                      color: AppColor.whiteColor,
+          InkWell(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => MirrorPage()));
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Container(
+                height: 80,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: AppColor.buttonButton,
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.shade300,
+                      blurRadius: 3,
+                      offset: Offset(0, 1),
+                      spreadRadius: 0,
                     ),
+                  ],
+                ),
+                child: Center(
+                  child: ListTile(
+                    title: const Text(
+                      "Screen mirroring",
+                      style: TextStyle(
+                        fontSize: 23,
+                        fontWeight: FontWeight.w500,
+                        color: AppColor.whiteColor,
+                      ),
+                    ),
+                    subtitle: Text("Mirror your screen to TV",style: TextStyle(fontSize: 15,color: AppColor.whiteColor),),
+                    trailing: Image.asset("assets/images/img_3.png",height: 50,width: 50,),
                   ),
-                  subtitle: Text("Mirror your screen to TV",style: TextStyle(fontSize: 15,color: AppColor.whiteColor),),
-                  trailing: Image.asset("assets/images/img_3.png",height: 50,width: 50,),
                 ),
               ),
             ),

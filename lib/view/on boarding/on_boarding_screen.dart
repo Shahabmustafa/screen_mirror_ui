@@ -8,7 +8,8 @@ import 'package:screen_mirror/utils/color_app.dart';
 import 'package:screen_mirror/utils/utils.dart';
 import 'package:screen_mirror/view/home_screen.dart';
 
-import '../model/on_boarding_model.dart';
+import '../../model/on_boarding_model.dart';
+
 
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({Key? key}) : super(key: key);

@@ -19,8 +19,8 @@ class _WhiteBoardPageState extends State<WhiteBoardPage> {
           20.ph,
           Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 110),
+              const Padding(
+                padding: EdgeInsets.only(left: 110),
                 child: Text("Welcome to Whiteboard",style: TextStyle(
                   fontSize: 36,
                   fontWeight: FontWeight.bold,

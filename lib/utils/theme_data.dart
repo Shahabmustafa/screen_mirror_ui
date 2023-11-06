@@ -9,7 +9,8 @@ class AppTheme{
         elevation: 0,
         titleTextStyle: TextStyle(
           color: Colors.black,
-          fontSize: 25,
+          fontSize: 20,
+          fontWeight: FontWeight.w500,
         ),
         iconTheme: IconThemeData(
           color: Colors.black,

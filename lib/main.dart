@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:screen_mirror/utils/color_app.dart';
 import 'package:screen_mirror/utils/theme_data.dart';
-import 'package:screen_mirror/view/on%20boarding/on_boarding_screen.dart';
+import 'package:screen_mirror/view/splash/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.appThemeData,
-      home: OnBoardingPage(),
+      home: SplashPage(),
     );
   }
 }
