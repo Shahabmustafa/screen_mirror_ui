@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:screen_mirror/component/widgets/custom_button.dart';
 import 'package:screen_mirror/utils/color_app.dart';
 import 'package:screen_mirror/utils/utils.dart';
+import 'package:screen_mirror/view/subscription/rate_screen.dart';
 import 'package:screen_mirror/view/subscription/ready_subscription.dart';
 
 import '../on boarding/on_boarding_screen.dart';
@@ -161,28 +163,11 @@ class _SubscriptionState extends State<SubscriptionPage> {
               ],
             ),
             10.ph,
-            InkWell(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ReadySubscriptionPage()));
-              },
-              child: Container(
-                height: 60,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: AppColor.buttonButton,
-                  borderRadius: BorderRadius.circular(20)
-                ),
-                child: Center(
-                    child: Text(
-                      "Continue",
-                      style: TextStyle(
-                        color: AppColor.whiteColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                ),
-              ),
+            RoundButton(
+                title: "Continue",
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => RatePage()));
+                },
             ),
             10.ph,
             const Text(

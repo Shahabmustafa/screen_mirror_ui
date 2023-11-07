@@ -23,10 +23,10 @@ class _RatePageState extends State<RatePage> {
           Column(
             children: [
               Image.asset(
-                "assets/images/img_6.png",
+                "assets/images/img_10.png",
                 color: AppColor.blackColor,
-                height: 250,
-                width: 250,
+                height: 220,
+                width: 220,
               ),
               20.ph,
               const Row(

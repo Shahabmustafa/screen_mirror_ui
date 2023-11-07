@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:screen_mirror/utils/color_app.dart';
 import 'package:screen_mirror/utils/utils.dart';
+import 'package:screen_mirror/view/setting/faq_screen.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);
@@ -59,6 +60,9 @@ class _SettingPageState extends State<SettingPage> {
               leading: Icon(CupertinoIcons.arrow_clockwise),
               title: Text("FAQ"),
               trailing: Icon(Icons.arrow_forward_ios),
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => FAQPage()));
+              },
             ),
           ),
           Card(

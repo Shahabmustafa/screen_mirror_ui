@@ -48,10 +48,13 @@ class _ShowNavigatorIPTVState extends State<ShowNavigatorIPTV> {
       body: ListView.builder(
         itemCount: 4,
         itemBuilder: (context,index){
-          return CupertinoListTile(
-            leading: Image.asset(image[index],height: 100,width: 100,color: AppColor.blackColor,),
-            title: Text(title[index]),
-            subtitle: Text(Links[index]),
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: CupertinoListTile(
+              leading: Image.asset(image[index],height: 100,width: 100,color: AppColor.blackColor,),
+              title: Text(title[index],style: TextStyle(fontWeight: FontWeight.w600,fontSize: 18),),
+              subtitle: Text(Links[index]),
+            ),
           );
         },
       ),

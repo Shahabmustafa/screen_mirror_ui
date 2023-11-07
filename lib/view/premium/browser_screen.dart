@@ -1,5 +1,4 @@
-
-
+import 'package:url_launcher/url_launcher.dart' as launcher;
 import 'package:flutter/material.dart';
 import 'package:screen_mirror/component/widgets/custom_text_field.dart';
 import 'package:screen_mirror/utils/utils.dart';
@@ -43,10 +42,24 @@ class _BrowserPageState extends State<BrowserPage> {
                 SocialMediaBox(
                   title: "Youtube",
                   imageURl: "img_3.png",
+                  onTap: ()async{
+                    Uri uri = Uri.parse("https://www.youtube.com/");
+                    if(await launcher.launchUrl(uri)){
+                    }else{
+                    print("Could't Open this URl");
+                    }
+                  },
                 ),
                 SocialMediaBox(
                   title: "Ted",
                   imageURl: "img_6.png",
+                  onTap: ()async{
+                    Uri uri = Uri.parse("https://www.ted.com/");
+                    if(await launcher.launchUrl(uri)){
+                    }else{
+                      print("Could't Open this URl");
+                    }
+                  },
                 ),
               ],
             ),
@@ -57,10 +70,24 @@ class _BrowserPageState extends State<BrowserPage> {
                 SocialMediaBox(
                   title: "Twitch",
                   imageURl: "img_7.png",
+                  onTap: ()async{
+                    Uri uri = Uri.parse("https://www.twitch.tv/");
+                    if(await launcher.launchUrl(uri)){
+                    }else{
+                      print("Could't Open this URl");
+                    }
+                  },
                 ),
                 SocialMediaBox(
                   title: "DailyMotion",
                   imageURl: "img_8.png",
+                  onTap: ()async{
+                    Uri uri = Uri.parse("https://www.dailymotion.com/");
+                    if(await launcher.launchUrl(uri)){
+                    }else{
+                      print("Could't Open this URl");
+                    }
+                  },
                 ),
               ],
             ),
@@ -71,10 +98,24 @@ class _BrowserPageState extends State<BrowserPage> {
                 SocialMediaBox(
                   title: "Vimeo",
                   imageURl: "img_9.png",
+                  onTap: ()async{
+                    Uri uri = Uri.parse("https://vimeo.com/");
+                    if(await launcher.launchUrl(uri)){
+                    }else{
+                      print("Could't Open this URl");
+                    }
+                  },
                 ),
                 SocialMediaBox(
                   title: "Veoh",
                   imageURl: "img_10.png",
+                  onTap: ()async{
+                    Uri uri = Uri.parse("https://www.veoh.com/");
+                    if(await launcher.launchUrl(uri)){
+                    }else{
+                      print("Could't Open this URl");
+                    }
+                  },
                 ),
               ],
             ),

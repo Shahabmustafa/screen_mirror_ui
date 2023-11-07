@@ -33,7 +33,7 @@ class _SubscriptionState extends State<ReadySubscriptionPage> {
               children: [
                 InkWell(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => OnBoardingPage()));
+                    Navigator.pop(context);
                   },
                   child: Icon(
                     CupertinoIcons.clear,

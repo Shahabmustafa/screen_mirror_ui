@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:screen_mirror/utils/utils.dart';
 import 'package:screen_mirror/view/whiteboard/white_board_file.dart';
 
-import '../../component/widgets/custom_text_field.dart';
-
 class WhiteBoardPage extends StatefulWidget {
   const WhiteBoardPage({Key? key}) : super(key: key);
 
@@ -13,7 +11,6 @@ class WhiteBoardPage extends StatefulWidget {
 }
 
 class _WhiteBoardPageState extends State<WhiteBoardPage> {
-  bool boxes = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,8 +31,7 @@ class _WhiteBoardPageState extends State<WhiteBoardPage> {
           ),
         ],
       ),
-      body: boxes == true ?
-      Column(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -44,7 +40,7 @@ class _WhiteBoardPageState extends State<WhiteBoardPage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 35),
             child: Text(
-                "All your boards will be stored here.You can edit, rename or delete them atany time.",
+                "All your boards will be stored here.You can edit, rename or delete them at any time.",
               style: TextStyle(
                 fontSize: 21,
                 fontWeight: FontWeight.w200
@@ -52,26 +48,7 @@ class _WhiteBoardPageState extends State<WhiteBoardPage> {
               textAlign: TextAlign.center,
             ),
           ),
-
         ],
-      ) :
-      GridView.builder(
-          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 3,
-          ),
-          itemBuilder: (context,index){
-            return Column(
-              children: [
-                Container(
-                  height: 100,
-                  width: 250,
-                  decoration: BoxDecoration(
-                    color: Colors.grey,
-                  ),
-                ),
-              ],
-            );
-          }
       ),
     );
   }

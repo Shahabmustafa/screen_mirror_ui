@@ -5,12 +5,11 @@ import 'package:screen_mirror/utils/color_app.dart';
 import 'package:screen_mirror/utils/utils.dart';
 import 'package:screen_mirror/view/premium/browser_screen.dart';
 import 'package:screen_mirror/view/premium/iptv_screen.dart';
-import 'package:screen_mirror/view/premium/media_screen.dart';
 import 'package:screen_mirror/view/premium/mirror_screen.dart';
 import 'package:screen_mirror/view/premium/setting.dart';
 import 'package:screen_mirror/view/premium/onboard_white_board_screen.dart';
+import 'package:screen_mirror/view/subscription/ready_subscription.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
-import 'package:permission_handler/permission_handler.dart';
 import '../component/widgets/boxes_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,11 +24,110 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.cast),
-        title: GoPremium(),
+        leading: InkWell(
+          onTap: (){
+            showModalBottomSheet(
+                shape: OutlineInputBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
+                ),
+                context: context,
+                builder: (context){
+                  return Column(
+                    children: [
+                      5.ph,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 180),
+                        child: Divider(
+                          color: Colors.black,
+                          thickness: 4,
+                        ),
+                      ),
+                      20.ph,
+                      Text(
+                        "Select Your Device",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      10.ph,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Text(
+                          "Make sure your phone and smart TV are connected to the same Wi-fi network. If your TV is not on the list, please reboot it (power reset) and try again.",
+                          style: TextStyle(
+                            fontSize: 17,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      10.ph,
+                      Padding(
+                        padding: const EdgeInsets.only(left: 30),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Airplay Devices",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      10.ph,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Card(
+                          elevation: 2,
+                          shape: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide.none
+                          ),
+                          child: ListTile(
+                            leading: Image.asset("assets/images/img_9.png",height: 30,width: 30,),
+                            title: Text("AirPlay"),
+                            subtitle: Text("Not Connected"),
+                          ),
+                        ),
+                      ),
+                      10.ph,
+                      Padding(
+                        padding: const EdgeInsets.only(left: 30),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Other Devices",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  );
+                }
+            );
+          },
+          child: Icon(Icons.cast),
+        ),
+        title: InkWell(
+          onTap: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => ReadySubscriptionPage()));
+          },
+          child: GoPremium(),
+        ),
         actions: [
           Padding(
-            padding: EdgeInsets.only(right: 10),
+            padding: EdgeInsets.all(10),
             child: InkWell(
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) => SettingPage()));
@@ -242,6 +340,5 @@ class _HomePageState extends State<HomePage> {
       // No image was selected
     }
   }
-
 }
 
