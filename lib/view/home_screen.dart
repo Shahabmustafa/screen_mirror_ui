@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:screen_mirror/utils/color_app.dart';
 import 'package:screen_mirror/utils/utils.dart';
 import 'package:screen_mirror/view/premium/browser_screen.dart';
@@ -7,9 +8,9 @@ import 'package:screen_mirror/view/premium/iptv_screen.dart';
 import 'package:screen_mirror/view/premium/media_screen.dart';
 import 'package:screen_mirror/view/premium/mirror_screen.dart';
 import 'package:screen_mirror/view/premium/setting.dart';
-import 'package:screen_mirror/view/premium/white_board_screen.dart';
+import 'package:screen_mirror/view/premium/onboard_white_board_screen.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
-
+import 'package:permission_handler/permission_handler.dart';
 import '../component/widgets/boxes_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -58,7 +59,8 @@ class _HomePageState extends State<HomePage> {
                 description: "Cast photos & videos",
                 imagePath: "img_1.png",
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => MediaPage()));
+                  _openImagePicker();
+                  // Navigator.push(context, MaterialPageRoute(builder: (context) => MediaPage()));
                 },
               ),
             ],
@@ -123,7 +125,7 @@ class _HomePageState extends State<HomePage> {
           20.ph,
           InkWell(
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => WhiteBoardPage()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => OnboardWhiteBoardPage()));
             },
             child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -231,5 +233,15 @@ class _HomePageState extends State<HomePage> {
       ),
       );
   }
+  Future<void> _openImagePicker() async {
+    final XFile? image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      // Process the selected image (e.g., display it in your app)
+      print('Selected image path: ${image.path}');
+    } else {
+      // No image was selected
+    }
+  }
+
 }
 

@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   font_awesome_flutter: ^9.2.0
   url_launcher: ^6.2.1
+  image_picker: ^1.0.4
+  permission_handler: ^11.0.1
 
 
 dev_dependencies:
@@ -76,6 +78,7 @@ flutter:
     - assets/images/social/
     - assets/images/media/
     - assets/images/whiteboard/
+    - assets/images/channels/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

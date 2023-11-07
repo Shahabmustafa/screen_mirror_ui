@@ -1,13 +1,9 @@
-
-
 import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:screen_mirror/utils/color_app.dart';
 import 'package:screen_mirror/utils/utils.dart';
 import 'package:screen_mirror/view/home_screen.dart';
-
 import '../../model/on_boarding_model.dart';
 
 
@@ -21,6 +17,9 @@ class OnBoardingPage extends StatefulWidget {
 class _OnBoardingPageState extends State<OnBoardingPage> {
   int currentIndex = 0;
   late PageController _controller;
+  bool button = false;
+  bool buttonOne = false;
+  bool buttonTwo = false;
   @override
   void initState() {
     // TODO: implement initState
@@ -82,14 +81,17 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                                 TextIcon(
                                   title: "Home",
                                   icon: CupertinoIcons.home,
+                                  color: AppColor.buttonButton,
                                 ),
                                 TextIcon(
                                   title: "Office",
                                   icon: CupertinoIcons.building_2_fill,
+                                  color: AppColor.buttonButton,
                                 ),
                                 TextIcon(
                                   title: "Both",
                                   icon: CupertinoIcons.house_alt,
+                                  color: AppColor.buttonButton,
                                 ),
                               ],
                             ),
@@ -188,9 +190,10 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
 }
 
 class TextIcon extends StatelessWidget {
-  TextIcon({Key? key,required this.title,required this.icon}) : super(key: key);
+  TextIcon({Key? key,required this.title,required this.icon,this.color}) : super(key: key);
   String title;
   IconData icon;
+  Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -201,19 +204,18 @@ class TextIcon extends StatelessWidget {
         padding: EdgeInsets.only(left: 30),
         width: double.infinity,
         decoration: BoxDecoration(
-            color: AppColor.buttonButton,
+            color: color,
             borderRadius: BorderRadius.circular(10)
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Icon(icon,size: 30,color: AppColor.whiteColor,),
-            10.pw,
-            Text(title,style: TextStyle(
-              fontSize: 20,
-              color: AppColor.whiteColor,
-            ),),
-          ],
+        child: ListTile(
+          leading: Icon(icon,color: AppColor.whiteColor,),
+          title: Text(title,style: TextStyle(color: AppColor.whiteColor),),
+          trailing: Checkbox(
+            value: true,
+            onChanged: (value){
+
+            },
+          )
         ),
       ),
     );

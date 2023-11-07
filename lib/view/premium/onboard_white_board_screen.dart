@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:screen_mirror/component/widgets/custom_button.dart';
 import 'package:screen_mirror/utils/color_app.dart';
 import 'package:screen_mirror/utils/utils.dart';
+import 'package:screen_mirror/view/whiteboard/white_board_screen.dart';
 
-class WhiteBoardPage extends StatefulWidget {
-  const WhiteBoardPage({Key? key}) : super(key: key);
+class OnboardWhiteBoardPage extends StatefulWidget {
+  const OnboardWhiteBoardPage({Key? key}) : super(key: key);
 
   @override
-  State<WhiteBoardPage> createState() => _WhiteBoardPageState();
+  State<OnboardWhiteBoardPage> createState() => _OnboardWhiteBoardPageState();
 }
 
-class _WhiteBoardPageState extends State<WhiteBoardPage> {
+class _OnboardWhiteBoardPageState extends State<OnboardWhiteBoardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,20 +59,11 @@ class _WhiteBoardPageState extends State<WhiteBoardPage> {
           80.ph,
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Container(
-              height: 60,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: AppColor.buttonButton,
-                borderRadius: BorderRadius.circular(20)
-              ),
-              child: Center(
-                child: Text("Let's go",style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  color: AppColor.whiteColor,
-                ),),
-              ),
+            child: RoundButton(
+                title: "Let's go",
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => WhiteBoardPage()));
+                },
             ),
           ),
         ],

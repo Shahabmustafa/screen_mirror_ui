@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:screen_mirror/utils/utils.dart';
+import 'package:screen_mirror/view/premium/shownavigator_iptv.dart';
 
 import '../../component/widgets/custom_text_field.dart';
 
@@ -43,10 +44,38 @@ class _IPTVPageState extends State<IPTVPage> {
         title: Text("IPTV"),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 10),
+            padding: const EdgeInsets.all(10),
             child: InkWell(
               onTap: (){
-
+                showCupertinoModalPopup(
+                  context: context,
+                  builder: (context){
+                    return CupertinoActionSheet(
+                      actions: <Widget>[
+                        CupertinoActionSheetAction(
+                          child: Text('Add M3U URL'),
+                          onPressed: () {
+                            // Perform an action when Option 1 is selected.
+                            Navigator.pop(context);
+                          },
+                        ),
+                        CupertinoActionSheetAction(
+                          child: Text('Open Stream URL'),
+                          onPressed: () {
+                            // Perform an action when Option 2 is selected.
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ],
+                      cancelButton: CupertinoActionSheetAction(
+                        child: Text('Cancel'),
+                        onPressed: () {
+                          // Close the sheet when Cancel is pressed.
+                          Navigator.pop(context);
+                        },
+                      ),);
+                  },
+                );
               },
               child: Icon(Icons.add,size: 30,),
             ),
@@ -98,35 +127,7 @@ class _IPTVPageState extends State<IPTVPage> {
                       title: Text(title[index]),
                       subtitle: Text("26 Channel"),
                       onTap: (){
-                        showCupertinoModalPopup(
-                          context: context,
-                          builder: (context){
-                            return CupertinoActionSheet(
-                              actions: <Widget>[
-                                CupertinoActionSheetAction(
-                                  child: Text('Add M3U URL'),
-                                  onPressed: () {
-                                    // Perform an action when Option 1 is selected.
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                CupertinoActionSheetAction(
-                                  child: Text('Open Stream URL'),
-                                  onPressed: () {
-                                    // Perform an action when Option 2 is selected.
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                              ],
-                              cancelButton: CupertinoActionSheetAction(
-                                child: Text('Cancel'),
-                                onPressed: () {
-                                  // Close the sheet when Cancel is pressed.
-                                  Navigator.pop(context);
-                                },
-                              ),);
-                          },
-                        );
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ShowNavigatorIPTV()));
                       },
                     ),
                   );
