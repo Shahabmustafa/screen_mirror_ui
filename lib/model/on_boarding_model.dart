@@ -11,7 +11,7 @@ List<OnBoardingModel> contents = [
   OnBoardingModel(
     title: "Hi there!",
     Description: "Let’s complete a few steps together to get started.",
-    imageURL: "assets/images/onBoarding/img.png",
+    imageURL: "assets/images/onBoarding/img_4.png",
   ),
   OnBoardingModel(
     title: "Access to Network",
@@ -22,16 +22,16 @@ List<OnBoardingModel> contents = [
     title: "How are you planning to use the app?",
     Description: "",
     extraButton: ["Home","Office","Both"],
-    imageURL: "assets/images/onBoarding/img.png",
+    imageURL: "assets/images/onBoarding/img_4.png",
   ),
   OnBoardingModel(
     title: "Same Wi-Fi",
     Description: "Before we begin, please make sure your devices are on the same Wi-Fi network.",
-    imageURL: "assets/images/onBoarding/img_3.png",
+    imageURL: "assets/images/onBoarding/img_2.png",
   ),
   OnBoardingModel(
     title: "Let’s set up",
     Description: "Please wait while we’re setting up the connection. This process will finish shortly",
-    imageURL: "assets/images/onBoarding/img_2.png",
+    imageURL: "assets/images/onBoarding/img_3.png",
   ),
 ];

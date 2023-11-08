@@ -183,7 +183,7 @@ class _SubscriptionState extends State<ReadySubscriptionPage> {
             RoundButton(
               title: "Continue",
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => RatePage()));
+                Navigator.pop(context);
               },
             ),
             10.ph,

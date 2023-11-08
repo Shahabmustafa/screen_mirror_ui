@@ -25,6 +25,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         leading: InkWell(
+          highlightColor: Colors.transparent,
+          splashColor: Colors.transparent,
           onTap: (){
             showModalBottomSheet(
                 shape: OutlineInputBorder(
@@ -84,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Card(
-                          elevation: 2,
+                          elevation: 0.5,
                           shape: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                             borderSide: BorderSide.none
@@ -120,6 +122,8 @@ class _HomePageState extends State<HomePage> {
           child: Icon(Icons.cast),
         ),
         title: InkWell(
+          highlightColor: Colors.transparent,
+          splashColor: Colors.transparent,
           onTap: (){
             Navigator.push(context, MaterialPageRoute(builder: (context) => ReadySubscriptionPage()));
           },
@@ -129,6 +133,8 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: EdgeInsets.all(10),
             child: InkWell(
+              highlightColor: Colors.transparent,
+              splashColor: Colors.transparent,
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) => SettingPage()));
               },
@@ -138,138 +144,103 @@ class _HomePageState extends State<HomePage> {
         ],
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          20.ph,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Boxes(
-                title: "Browser",
-                description: "Cast from websites",
-                imagePath: "img.png",
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => BrowserPage()));
-                },
-              ),
-              Boxes(
-                title: "Media",
-                description: "Cast photos & videos",
-                imagePath: "img_1.png",
-                onTap: () {
-                  _openImagePicker();
-                  // Navigator.push(context, MaterialPageRoute(builder: (context) => MediaPage()));
-                },
-              ),
-            ],
-          ),
-          20.ph,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Boxes(
-                title: "IPTV",
-                description: "Watch TV channels",
-                imagePath: "img_2.png",
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => IPTVPage()));
-                },
-              ),
-              Boxes(
-                title: "Youtube",
-                description: "Watch Youtube",
-                imagePath: "img_3.png",
-                onTap: ()async{
-                  Uri uri = Uri.parse("https://www.youtube.com/");
-                  if(await launcher.launchUrl(uri)){
-                  }else{
-                    print("Could't Open this URl");
-                  }
-                },
-              ),
-            ],
-          ),
-          20.ph,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Boxes(
-                title: "Google Drive",
-                description: "Cast files",
-                imagePath: "img_4.png",
-                onTap: ()async{
-                  Uri uri = Uri.parse("https://drive.google.com/drive/u/0/my-drive");
-                  if(await launcher.launchUrl(uri)){
-                  }else{
-                  print("Could't Open this URl");
-                  }
-                  // Navigator.push(context, MaterialPageRoute(builder: (context) => GoogleDrivePage()));
-                },
-              ),
-              Boxes(
-                title: "Google Photos",
-                description: "Cast media",
-                imagePath: "img_5.png",
-                onTap: ()async{
-                  Uri uri = Uri.parse("https://www.google.com/photos/");
-                  if(await launcher.launchUrl(uri)){
-                  }else{
-                  print("Could't Open this URl");
-                  }
-                },
-              ),
-            ],
-          ),
-          20.ph,
-          InkWell(
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => OnboardWhiteBoardPage()));
-            },
-            child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Container(
-              height: 80,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.shade300,
-                    blurRadius: 3,
-                    offset: Offset(0, 1),
-                    spreadRadius: 0,
-                  ),
-                ],
-              ),
-              child: Center(
-                child: ListTile(
-                  title: const Text(
-                    "WhiteBoard",
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  subtitle: Text("Express yourself",style: TextStyle(fontSize: 16),),
-                  trailing: Image.asset("assets/images/img_1.png",height: 50,width: 50,),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            20.ph,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Boxes(
+                  title: "Browser",
+                  description: "Cast from websites",
+                  imagePath: "img.png",
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => BrowserPage()));
+                  },
                 ),
-              ),
+                Boxes(
+                  title: "Media",
+                  description: "Cast photos & videos",
+                  imagePath: "img_1.png",
+                  onTap: () {
+                    _openImagePicker();
+                    // Navigator.push(context, MaterialPageRoute(builder: (context) => MediaPage()));
+                  },
+                ),
+              ],
             ),
-        ),
-          ),
-          20.ph,
-          InkWell(
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => MirrorPage()));
-            },
-            child: Padding(
+            20.ph,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Boxes(
+                  title: "IPTV",
+                  description: "Watch TV channels",
+                  imagePath: "img_2.png",
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => IPTVPage()));
+                  },
+                ),
+                Boxes(
+                  title: "Youtube",
+                  description: "Watch Youtube",
+                  imagePath: "img_3.png",
+                  onTap: ()async{
+                    Uri uri = Uri.parse("https://www.youtube.com/");
+                    if(await launcher.launchUrl(uri)){
+                    }else{
+                      print("Could't Open this URl");
+                    }
+                  },
+                ),
+              ],
+            ),
+            20.ph,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Boxes(
+                  title: "Google Drive",
+                  description: "Cast files",
+                  imagePath: "img_4.png",
+                  onTap: ()async{
+                    Uri uri = Uri.parse("https://drive.google.com/drive/u/0/my-drive");
+                    if(await launcher.launchUrl(uri)){
+                    }else{
+                    print("Could't Open this URl");
+                    }
+                    // Navigator.push(context, MaterialPageRoute(builder: (context) => GoogleDrivePage()));
+                  },
+                ),
+                Boxes(
+                  title: "Google Photos",
+                  description: "Cast media",
+                  imagePath: "img_5.png",
+                  onTap: ()async{
+                    Uri uri = Uri.parse("https://www.google.com/photos/");
+                    if(await launcher.launchUrl(uri)){
+                    }else{
+                    print("Could't Open this URl");
+                    }
+                  },
+                ),
+              ],
+            ),
+            20.ph,
+            InkWell(
+              highlightColor: Colors.transparent,
+              splashColor: Colors.transparent,
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => OnboardWhiteBoardPage()));
+              },
+              child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Container(
                 height: 80,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: AppColor.buttonButton,
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(15),
                   boxShadow: [
                     BoxShadow(
@@ -283,23 +254,64 @@ class _HomePageState extends State<HomePage> {
                 child: Center(
                   child: ListTile(
                     title: const Text(
-                      "Screen mirroring",
+                      "WhiteBoard",
                       style: TextStyle(
-                        fontSize: 23,
+                        fontSize: 24,
                         fontWeight: FontWeight.w500,
-                        color: AppColor.whiteColor,
                       ),
                     ),
-                    subtitle: Text("Mirror your screen to TV",style: TextStyle(fontSize: 15,color: AppColor.whiteColor),),
-                    trailing: Image.asset("assets/images/img_3.png",height: 50,width: 50,),
+                    subtitle: Text("Express yourself",style: TextStyle(fontSize: 16),),
+                    trailing: Image.asset("assets/images/img_1.png",height: 50,width: 50,),
+                  ),
+                ),
+              ),
+          ),
+            ),
+            20.ph,
+            InkWell(
+              highlightColor: Colors.transparent,
+              splashColor: Colors.transparent,
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => MirrorPage()));
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Container(
+                  height: 80,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: AppColor.buttonButton,
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.shade300,
+                        blurRadius: 3,
+                        offset: Offset(0, 1),
+                        spreadRadius: 0,
+                      ),
+                    ],
+                  ),
+                  child: Center(
+                    child: ListTile(
+                      title: const Text(
+                        "Screen mirroring",
+                        style: TextStyle(
+                          fontSize: 23,
+                          fontWeight: FontWeight.w500,
+                          color: AppColor.whiteColor,
+                        ),
+                      ),
+                      subtitle: Text("Mirror your screen to TV",style: TextStyle(fontSize: 15,color: AppColor.whiteColor),),
+                      trailing: Image.asset("assets/images/img_3.png",height: 50,width: 50,),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          10.ph,
-          Text("Need Help?",style: TextStyle(fontSize: 18),),
-        ],
+            10.ph,
+            Text("Need Help?",style: TextStyle(fontSize: 18),),
+          ],
+        ),
       ),
     );
   }

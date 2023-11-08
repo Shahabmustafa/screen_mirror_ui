@@ -20,6 +20,8 @@ class _WhiteBoardPageState extends State<WhiteBoardPage> {
           Padding(
             padding: const EdgeInsets.all(10),
             child: InkWell(
+              highlightColor: Colors.transparent,
+              splashColor: Colors.transparent,
               onTap: (){
                 _showAlertDialog(context);
               },

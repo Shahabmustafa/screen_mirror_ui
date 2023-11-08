@@ -115,13 +115,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               gradient: currentIndex == contents.length -1 ?
               const LinearGradient(
                 begin: Alignment.center,
-                end: Alignment.topRight,
-                transform: GradientRotation(5 * pi / 100),
-                stops: [
-                    0.09,
-                    0.1,
-                    0.5,
-                  ],
+                end: Alignment.center,
                   colors: [
                     AppColor.buttonButton,
                     AppColor.whiteColor,
@@ -138,6 +132,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               borderRadius: BorderRadius.circular(20),
             ),
             child: InkWell(
+              highlightColor: Colors.transparent,
               onTap: (){
                 if(currentIndex == contents.length -1){
                   Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));

@@ -46,6 +46,8 @@ class _IPTVPageState extends State<IPTVPage> {
           Padding(
             padding: const EdgeInsets.all(10),
             child: InkWell(
+              highlightColor: Colors.transparent,
+              splashColor: Colors.transparent,
               onTap: (){
                 showCupertinoModalPopup(
                   context: context,
